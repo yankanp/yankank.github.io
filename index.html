@@ -14,18 +14,11 @@
 </head>
 
 <body>
-  <div id="wrapper">
-  Click the image to finish!
-  <img src="https://upload.wikimedia.org/wikipedia/commons/8/84/Example.svg" id="example" alt="example">
-
-  <div id="end-dialog-message" title="Ready to submit?"></div>
+  <h1>Test Form to send data to Mturk </h1>
 
   <form id = "endForm" action="https://workersandbox.mturk.com/mturk/externalSubmit" method="POST">
-      <input type="hidden" id="user-input" value="" name="user-input"/>
       <input type="hidden" id="assignmentId" value="" name="assignmentId"/>
-      <input type="hidden" id="workerId" value="" name="workerId"/>
-      <input type="hidden" id="hitId" value="" name="hitId"/>
-	  <form action="/action_page.php">
+
 	  <label for="fname">First name:</label><br>
 	  <input type="text" id="fname" name="fname" value="John"><br>
 	  <label for="lname">Last name:</label><br>
@@ -36,46 +29,6 @@
 
 </body>
 
-<script>
 
-  //Code to extract url parameters
-  //Credit goes to
-  //http://stackoverflow.com/questions/19491336/get-url-parameter-jquery-or-how-to-get-query-string-values-in-js
-  var queryDict = {};
-  location.search.substr(1).split("&").forEach(function(item) {queryDict[item.split("=")[0]] = item.split("=")[1]})
-
-  //Using extracted url parameters to populate form
-  $("#endForm").attr("action", queryDict["host"]);
-  $('#assignmentId').val(queryDict["assignmentId"]);
-  $('#workerId').val(queryDict["workerId"]);
-  $('#hitId').val(queryDict["hitId"]);
-
-  //Pop up a confirmation message, populate user-input field, and send out the form.
-  function endDialog()
-  {
-    $( "#end-dialog-message" ).dialog({
-      resizable: false,
-      height:140,
-      modal: true,
-      buttons: {
-        "Submit Results?": function() {
-          var string = "whateverFinalResultsWeWantToPass";
-          $('#user-input').val(string);
-          $("#endForm").submit();
-          $( this ).dialog( "close" );
-        },
-        Cancel: function() {
-          $( this ).dialog( "close" );
-        }
-      }
-    });
-  }
-
-  //Sets trigger for confirmation message.
-  $('#example').click(function(){
-    endDialog();
-  });
-
-  </script>
 
 </html>
