@@ -1,24 +1,14 @@
-<!doctype html>
-
-<html lang="en">
-<head>
+<html>
+ <head>
   <meta http-equiv='Content-Type' content='text/html; charset=UTF-8'/>
   <script type='text/javascript' src='https://s3.amazonaws.com/mturk-public/externalHIT_v1.js'></script>
  </head>
-
-<body>
-  <h1>Test Form to send data to Mturk 2 </h1>
-
-  <form id = "endForm" action="https://workersandbox.mturk.com/mturk/externalSubmit" method="POST">
-      <input type="hidden" id="assignmentId" value="" name="assignmentId"/>
-      <input type="hidden" id="workerId" value="" name="workerId"/>
-	  <label for="fname">First name:</label><br>
-	  <input type="text" id="fname" name="fname" value="John"><br>
-	  <label for="lname">Last name:</label><br>
-	  <input type="text" id="lname" name="lname" value="Doe"><br><br>
-	  <p><input type='submit' id='submitButton' value='Submit' /></p></form>
-	  <script language='Javascript'>turkSetAssignmentID();</script>
-</body>
-
-
+ <body>
+  <form name='mturk_form' method='post' id='mturk_form' action='https://workersandbox.mturk.com/mturk/externalSubmit'>
+  <input type='hidden' value='' name='assignmentId' id='assignmentId'/>
+  <h1>This is a test question 3</h1>
+  <p><textarea name='comment' cols='80' rows='3'></textarea></p>
+  <p><input type='submit' id='submitButton' value='Submit' /></p></form>
+  <script language='Javascript'>turkSetAssignmentID();</script>
+ </body>
 </html>
