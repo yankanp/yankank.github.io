@@ -108,13 +108,13 @@ font-size: 30px;
   }
   
 </script> -->
-<body onload="turkSetAssignmentID()">
+<body onload="turkGetParam('assignmentId', "")">
 
 <form id="regForm">
   
   <!-- One "tab" for each step in the form: -->
   <div class="tab">
-  <h1>Introduction3</h1>
+  <h1>Introduction4</h1>
     <p>Thank you for volunteering to participant in "Comparing Layouts for Eye Gaze-based PIN Entry for People with Upper Extremity Impairment" by the ASSET group at The University of Rhode Island.</p>
   </br>
   <p>Please read and review the informed consent form on the following page. If you have any questions or concerns, please contact us before beginning the study. Thank you again for participating!</p>
@@ -312,15 +312,19 @@ function fixStepIndicator(n) {
  * Gets a URL parameter from the query string
  */
 function turkGetParam( name, defaultValue ) { 
+console.log('Calling get assignment id function');
    var regexS = "[\?&]"+name+"=([^&#]*)"; 
    var regex = new RegExp( regexS ); 
    var tmpURL = window.location.href; 
    var results = regex.exec( tmpURL ); 
    if( results == null ) { 
+   console.log(defaultValue)
      return defaultValue; 
    } else { 
+   console.log(results[1])
      return results[1];    
    } 
+   
 }
 
 /**
