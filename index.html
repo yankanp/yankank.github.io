@@ -114,7 +114,7 @@ font-size: 30px;
   
   <!-- One "tab" for each step in the form: -->
   <div class="tab">
-  <h1>Introduction2</h1>
+  <h1>Introduction3</h1>
     <p>Thank you for volunteering to participant in "Comparing Layouts for Eye Gaze-based PIN Entry for People with Upper Extremity Impairment" by the ASSET group at The University of Rhode Island.</p>
   </br>
   <p>Please read and review the informed consent form on the following page. If you have any questions or concerns, please contact us before beginning the study. Thank you again for participating!</p>
@@ -367,7 +367,8 @@ function turkSetAssignmentID( form_name, button_name ) {
 
   assignmentID = turkGetParam('assignmentId', "");
   document.getElementById('assignmentId').value = assignmentID;
-
+	console.log('Assignment ID');
+	console.log(assignmentID);
   if (assignmentID == "ASSIGNMENT_ID_NOT_AVAILABLE") { 
     // If we're previewing, disable the button and give it a helpful message
     btn = document.getElementById(button_name);
