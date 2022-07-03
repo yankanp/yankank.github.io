@@ -2,6 +2,7 @@
  * Gets a URL parameter from the query string
  */
 function turkGetParam( name, defaultValue ) { 
+console.log("calling turkGetParam funtion");
    var regexS = "[\?&]"+name+"=([^&#]*)"; 
    var regex = new RegExp( regexS ); 
    var tmpURL = window.location.href; 
@@ -46,7 +47,7 @@ function turkGetSubmitToHost() {
  * Sets the assignment ID in the form. Defaults to use mturk_form and submitButton
  */ 
 function turkSetAssignmentID( form_name, button_name ) {
-
+	console.log("calling setAssignmentID funtion");
   if (form_name == null) {
     form_name = "mturk_form";
   }
@@ -71,6 +72,7 @@ function turkSetAssignmentID( form_name, button_name ) {
   if (form) {
      form.action = turkGetSubmitToHost() + "/mturk/externalSubmit"; 
   }
+  console.log("calling setAssignmentID funtion completed");
 }
 
 // Inlined functionality for String.startsWith as IE does not support that method.
