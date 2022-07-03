@@ -8,8 +8,10 @@ console.log("calling turkGetParam funtion");
    var tmpURL = window.location.href; 
    var results = regex.exec( tmpURL ); 
    if( results == null ) { 
+   console.log("calling turkGetParam funtion completed default "+defaultValue);
      return defaultValue; 
    } else { 
+   console.log("calling turkGetParam funtion completed result "+results[1]);
      return results[1];    
    } 
 }
