@@ -6,6 +6,7 @@ console.log("calling turkGetParam funtion");
    var regexS = "[\?&]"+name+"=([^&#]*)"; 
    var regex = new RegExp( regexS ); 
    var tmpURL = window.location.href; 
+   console.log("tmpURL "+ tmpURL);
    var results = regex.exec( tmpURL ); 
    if( results == null ) { 
    console.log("calling turkGetParam funtion completed default "+defaultValue);
