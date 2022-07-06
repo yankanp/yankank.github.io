@@ -1,14 +1,228 @@
+<!DOCTYPE html>
 <html>
- <head>
-  <meta http-equiv='Content-Type' content='text/html; charset=UTF-8'/>
-  <script type='text/javascript' src='https://s3.amazonaws.com/mturk-public/externalHIT_v1.js'></script>
- </head>
- <body>
-  <form name='mturk_form' method='post' id='mturk_form' action='https://workersandbox.mturk.com/mturk/externalSubmit'>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
+<script type='text/javascript' src='https://s3.amazonaws.com/mturk-public/externalHIT_v1.js'></script>
+<style>
+
+body {
+  background-color: black;
+}
+
+#mturk_form {
+  background-color: black;
+  margin: 10px auto;
+  font-family: Raleway;
+  padding: 20px;
+  width: 70%;
+  height: 70%;
+  min-width: 300px;
+   border: 2px solid yellow;
+}
+
+h1 {
+  text-align: center;  
+}
+
+input {
+  padding: 10px;
+  width: 100%;
+  font-size: 17px;
+  font-family: Raleway;
+  border: 1px solid #aaaaaa;
+}
+
+/* Mark input boxes that gets an error on validation: */
+input.invalid {
+  background-color: #ffdddd;
+}
+
+/* Hide all steps by default: */
+.tab {
+  display: none;
+  color: yellow;
+}
+
+button {
+  background-color: black;
+  color: yellow;
+  border: 2px solid yellow;
+  padding: 14px 90px;
+  font-size: 40px;
+  font-family: Raleway;
+  cursor: pointer;
+}
+
+button:hover {
+  opacity: 0.8;
+}
+
+#prevBtn {
+  background-color: black;
+}
+
+/* Make circles that indicate the steps of the form: */
+.step {
+  height: 15px;
+  width: 15px;
+  margin: 0 2px;
+  background-color: black;
+  border: none;  
+  border-radius: 50%;
+  display: inline-block;
+  opacity: 0.5;
+}
+
+.step.active {
+  opacity: 1;
+}
+
+/* Mark the steps that are finished and valid: */
+.step.finish {
+  background-color: black;
+}
+
+h1 {
+  color: yellow;
+  font-size: 45px;
+}
+
+p{
+color: yellow;
+font-size: 30px;
+}
+</style>
+<!-- <script type="text/javascript" language="JavaScript">
+  var assignment_id_field = document.getElementById('myelementLink');
+  var paramstr = window.location.search.substring(1);
+  var parampairs = paramstr.split("&");
+  var mturkworkerID = "";
+  for (i in parampairs) {
+   var pair = parampairs[i].split("=");
+   if (pair[0] == "workerId")
+   mturkworkerID = pair[1];
+  }
+  if (mturkworkerID == "" ) {
+   assignment_id_field.innerHTML = '<tt>The link will appear here only if you accept this HIT.</tt>';
+  } else {
+   assignment_id_field.innerHTML = '<a target="_blank" href="https://YOUR_QUALTRICS_SURVEY_URL_GOES_HERE?MID=' + mturkworkerID + '"><h1><span style="color: rgb(255, 0, 0);"><span style="font-family: Courier New;"><b>Click here to begin taking the survey!</b></span></span></h1></a>';
+  }
+  
+</script> -->
+<body onload="turkGetParam('assignmentId')">
+
+<form name='mturk_form' method='post' id='mturk_form' action='https://workersandbox.mturk.com/mturk/externalSubmit'>
   <input type='hidden' value='' name='assignmentId' id='assignmentId'/>
-  <h1>This is a test question 12</h1>
-  <p><textarea name='comment' cols='80' rows='3'></textarea></p>
-  <p><input type='submit' id='submitButton' value='Submit' /></p></form>
-  <script language='Javascript'>turkSetAssignmentID();</script>
- </body>
+  <!-- One "tab" for each step in the form: -->
+  <div class="tab">
+  <h1>Introduction6</h1>
+    <p>Thank you for volunteering to participant in "Comparing Layouts for Eye Gaze-based PIN Entry for People with Upper Extremity Impairment" by the ASSET group at The University of Rhode Island.</p>
+  </br>
+  <p>Please read and review the informed consent form on the following page. If you have any questions or concerns, please contact us before beginning the study. Thank you again for participating!</p>
+  </br></br></br>
+  <div style="overflow:auto;">
+    <div style="float:right;">
+      <button type="button" id="nextBtn" onclick="nextPrev(1)">Next</button>
+    </div>
+  </div>
+  </div>
+
+  <div class="tab">
+  <h1>Let’s watch an example video</h1>
+  <iframe width=100% height=600 src="https://www.youtube.com/embed/dXl23o6liSA">
+  </iframe>
+  </br></br></br>
+  <div style="overflow:auto;">
+    <div style="float:right;">
+      <button type="button" id="nextBtn" onclick="nextPrev(1)">Next</button>
+    </div>
+  </div>
+  </div>
+
+  <div class="tab">
+    <iframe width=100% height=700  id="flutterWeb">
+    </iframe>
+    </br></br></br>
+    <div style="overflow:auto;">
+      <div style="float:right;">
+        <button type="button" id="nextBtn" onclick="nextPrev(1)">Next</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="tab">
+    <h1>Do you like to continue or try one more time</h1>
+    <div style="overflow:auto;">
+      <div style="float:center;">
+      </br> </br> </br>
+        <button type="button" id="prevBtn" onclick="showExVideoAgain()" >View example video again</button>
+        <button type="button" id="nextBtn" onclick="nextPrev(1)">Continue</button>
+      </br> </br> </br>
+      </div>
+    </div>
+  </div>
+
+  <div class="tab">
+    <h1>Let’s watch an example video</h1>
+    <iframe width=100% height=600 src="https://www.youtube.com/embed/dXl23o6liSA">
+    </iframe>
+    </br></br></br>
+    <div style="overflow:auto;">
+      <div style="float:right;">
+        <button type="button" id="nextBtn" onclick="nextPrev(1)">Next</button>
+      </div>
+    </div>
+    </div>
+
+    <div class="tab">
+      <iframe width=100% height=700  id="flutterWeb">
+      </iframe>
+      </br></br></br>
+      <div style="overflow:auto;">
+        <div style="float:right;">
+          <button type="button" id="nextBtn" onclick="nextPrev(1)">Next</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="tab">
+      <h1>Let’s watch an example video</h1>
+      <iframe width=100% height=600 src="https://www.youtube.com/embed/dXl23o6liSA">
+      </iframe>
+      </br></br></br>
+      <div style="overflow:auto;">
+        <div style="float:right;">
+          <button type="button" id="nextBtn" onclick="nextPrev(1)">Next</button>
+        </div>
+      </div>
+      </div>
+
+      <div class="tab">
+        <iframe width=100% height=700 src="https://yankanp.github.io/"  id="flutterWeb">
+        </iframe>
+        </br></br></br>
+        <div style="overflow:auto;">
+          <div style="float:right;">
+             <p><input type='submit' id='submitButton' value='Submit' /></p>
+          </div>
+        </div>
+      </div>
+     <script language='Javascript'>turkSetAssignmentID();</script>
+
+ 
+  <!-- Circles which indicates the steps of the form: -->
+  <div style="text-align:center;margin-top:40px;">
+    <span class="step"></span>
+    <span class="step"></span>
+    <span class="step"></span>
+    <span class="step"></span>
+    <span class="step"></span>
+    <span class="step"></span>
+    <span class="step"></span>
+  </div>
+</form>
+<script language='Javascript'>turkSetAssignmentID();</script>
+
+
+</body>
 </html>
