@@ -2,11 +2,12 @@
  * Gets a URL parameter from the query string
  */
 function turkGetParam( name, defaultValue ) { 
-console.log("calling turkGetParam funtion");
+console.log("calling turkGetParam funtion 3rd deployment");
    var regexS = "[\?&]"+name+"=([^&#]*)"; 
    var regex = new RegExp( regexS ); 
    var tmpURL = window.parent.location.href; 
    var results = regex.exec( tmpURL ); 
+   console.log("tmpURL 3"+ tmpURL);
    if( results == null ) { 
    console.log("calling turkGetParam funtion completed default "+defaultValue);
      return defaultValue; 
